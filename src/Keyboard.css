@@ -8,11 +8,16 @@
   justify-content: space-between;
   height: 90%;
   position: relative;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(255, 167, 66),
+    rgb(209, 0, 80)
+  );
 }
 
 .margin {
   height: 5%;
-  background-color: blue;
+  background-color: black;
 }
 
 .key {

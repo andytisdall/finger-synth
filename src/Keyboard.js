@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
-import { scaleLog, scaleLinear } from 'd3';
+import { scaleLog } from 'd3';
 
 import './Keyboard.css';
-import Key from './Key';
 import player from './toneGenerator';
 import Controls from './Controls';
 
 const Keyboard = (props) => {
 
-    const [lowNote, setLowNote] = useState(264);
-    const [highNote, setHighNote] = useState(528);
+    const [key, setKey] = useState(32.7);
+    const [startingOctave, setStartingOctave] = useState(3);
+    const [octaves, setOctaves] = useState(3);
+
+    const getFreqRange = () => {
+        const floor = key * startingOctave;
+        const ceiling = floor * octaves * 2;
+
+        return [floor, ceiling];
+    }
 
     const frequencyScale = scaleLog()
         .domain([800, 30])
-        .range([lowNote, highNote]);
+        .range(getFreqRange());
 
     const modScale = scaleLog()
         .domain([1, 100])
         .range([1, 365]);
 
     const getFreq = position => {
-
         return frequencyScale(parseInt(position));
     };
 
     const getMod = position => {
-        console.log(modScale.invert(position))
         return modScale.invert(position);
     }
 
@@ -41,15 +46,19 @@ const Keyboard = (props) => {
         const freq = getFreq(e.changedTouches[0].clientY);
         const mod = getMod(e.changedTouches[0].clientX);
         player.changeMod(mod);
-        player.changeFreq(freq)
+        player.changeFreq(freq);
 
     }
 
     return (
         <div className='container'>
             <Controls
-                setHigh = {setHighNote}
-                setLow = {setLowNote}
+                selectedKey = {key}
+                setKey = {setKey}
+                octaves = {octaves}
+                setOctaves = {setOctaves}
+                startingOctave = {startingOctave}
+                setStartingOctave = {setStartingOctave}
             />
             <div
                 className='keyboard'
@@ -58,19 +67,6 @@ const Keyboard = (props) => {
                 onTouchEnd={player.stop}
                 onTouchCancel={player.stop}
             >
-
-                <Key note='C' />
-                <Key note='C#' step='1' />               
-                <Key note='D' />
-                <Key note='D#' step='2' />          
-                <Key note='E' />
-                <Key note='F' />
-                <Key note='F#' step='3' />
-                <Key note='G' />
-                <Key note='G#' step='4' />               
-                <Key note='A' />
-                <Key note='A#' step='5' />
-                <Key note='B' />
 
             </div>
             <div className='margin'/>
