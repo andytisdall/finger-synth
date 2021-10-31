@@ -1,0 +1,59 @@
+.container {
+  height: 100vh;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  height: 90%;
+  position: relative;
+}
+
+.margin {
+  height: 5%;
+  background-color: blue;
+}
+
+.key {
+  border: 1px solid black;
+  width: 100%;
+  height: 14.5%;
+}
+
+.blackKey {
+  background-color: black;
+  width: 70%;
+  height: 9%;
+  position: absolute;
+  z-index: 10;
+  color: white;
+}
+
+.step1 {
+  bottom: 10%;
+}
+
+.step2 {
+  bottom: 25%;
+}
+
+.step3 {
+  bottom: 53%;
+}
+
+.step4 {
+  bottom: 67.5%;
+}
+
+.step5 {
+  bottom: 81.5%;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 1rem;
+  color: white;
+}
