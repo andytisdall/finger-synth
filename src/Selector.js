@@ -1,8 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Selector = (props) => {
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const self = useRef(null);
+
+    useEffect(() => {
+        document.addEventListener('touchstart', e => {
+            if (e.target === self.current) {
+                return;
+            }
+
+            setMenuOpen(false);
+        });
+    }, []);
 
     const showOptions = () => {
 
@@ -28,7 +39,11 @@ const Selector = (props) => {
             <div className="selector-name">
                 {props.name}
             </div>
-            <div className="selector-menu" onClick={() => setMenuOpen(!menuOpen)}>
+            <div
+                className="selector-menu"
+                onClick={() => setMenuOpen(!menuOpen)}
+                ref={self}
+            >
                 <div className="selector-selected">
                     {displayValue.display}
                 </div>
