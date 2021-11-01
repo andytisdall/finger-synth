@@ -9,10 +9,10 @@ import Controls from './Controls';
 const Keyboard = (props) => {
 
     const [player, setPlayer] = useState(null);
-
     const [key, setKey] = useState(32.7);
     const [startingOctave, setStartingOctave] = useState(3);
     const [octaves, setOctaves] = useState(3);
+
 
     const getFreqRange = () => {
         const floor = key * startingOctave;
@@ -22,12 +22,15 @@ const Keyboard = (props) => {
     };
 
     const frequencyScale = scaleLog()
-        .domain([800, 30])
+        .domain([
+            window.innerHeight - window.innerHeight * .05,
+            window.innerHeight * .05
+        ])
         .range(getFreqRange());
 
     const modScale = scaleLog()
         .domain([1, 100])
-        .range([1, 365]);
+        .range([1, window.innerWidth]);
 
     const getFreq = position => {
         return frequencyScale(parseInt(position));
@@ -61,9 +64,9 @@ const Keyboard = (props) => {
         await Tone.start();
         setPlayer(new toneGenerator());
     };
-    
 
     const showKeyboard = () => {
+ 
         if (!player) {
             return (
                 <div

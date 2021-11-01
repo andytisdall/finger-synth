@@ -1,68 +1,62 @@
 import React from 'react';
+import Selector from './Selector';
 
 const Controls = props => {
+
+    const BASE_OCTAVES = 7;
+    const OCTAVE_RANGE = 12;
+
+    const keyOptions = [
+        {display: 'C', value: 32.7},
+        { display: 'C#', value: 34.65 },
+        { display: 'D', value: 36.71, },
+        { display: 'D#', value: 38.89 },
+        { display: 'E', value: 41.20, },
+        { display: 'F', value: 43.65, },
+        { display: 'F#', value: 46.25 },
+        { display: 'G', value: 49},
+        { display: 'G#', value: 51.91 },
+        { display: 'A', value: 55 },
+        { display: 'A#', value: 58.27 },
+        { display: 'B', value: 61.74 }
+    ];
+
+    const baseOctaveOptions = [];
+
+    [...Array(BASE_OCTAVES)].forEach((_, i) => {
+        baseOctaveOptions.push({ display: i + 1, value: i + 1 });
+    });
+
+    const octavesOptions = [];
+
+    [...Array(OCTAVE_RANGE)].forEach((_, i) => {
+        octavesOptions.push({ display: i + 1, value: i + 1 });
+    });
 
     return (
         <div className="margin">
             <div className="controls">
 
-                <div className="note-selector">
-                    Key 
-                    <select
-                        onInput={e => props.setKey(e.target.value)}
-                        value={props.selectedKey}  
-                    >
-                        <option value={32.7}>C</option>
-                        <option value={34.65}>C#</option>
-                        <option value={36.71}>D</option>
-                        <option value={38.89}>D#</option>
-                        <option value={41.20}>E</option>
-                        <option value={43.65}>F</option>
-                        <option value={46.25}>F#</option>
-                        <option value={49}>G</option>
-                        <option value={51.91}>G#</option>
-                        <option value={55}>A</option>
-                        <option value={58.27}>A#</option>
-                        <option value={61.74}>B</option>
-                    </select>
-                </div>
+                <Selector
+                    name="Key"
+                    options={keyOptions}
+                    selectedValue={props.selectedKey}
+                    onSelect={props.setKey}
+                />
 
-                <div className="note-selector">
-                    Starting Octave
-                    <select
-                        onInput={e => props.setStartingOctave(e.target.value)}
-                        value={props.startingOctave}
-                    >
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                        <option value={6}>6</option>
-                        <option value={7}>7</option>
-                    </select>
-                </div>
+                <Selector
+                    name="Base Octave"
+                    options={baseOctaveOptions}
+                    selectedValue={props.startingOctave}
+                    onSelect={props.setStartingOctave}
+                />
 
-                <div className="note-selector">
-                    Octaves
-                    <select
-                        onInput={e => props.setOctaves(e.target.value)}
-                        value={props.octaves}
-                    >
-                        <option value={1}>1</option>
-                        <option value={2}>2</option>
-                        <option value={3}>3</option>
-                        <option value={4}>4</option>
-                        <option value={5}>5</option>
-                        <option value={6}>6</option>
-                        <option value={7}>7</option>
-                        <option value={8}>8</option>
-                        <option value={9}>9</option>
-                        <option value={10}>10</option>
-                        <option value={11}>11</option>
-                        <option value={12}>12</option>
-                    </select>
-                </div>
+                <Selector
+                    name="Octave Range"
+                    options={octavesOptions}
+                    selectedValue={props.octaves}
+                    onSelect={props.setOctaves}
+                />
 
             </div>
         </div>

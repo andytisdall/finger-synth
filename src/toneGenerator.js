@@ -7,7 +7,7 @@ class toneGenerator {
         this.filter = new Tone.Filter(20000, 'lowpass').toDestination();
         this.distortion = new Tone.Distortion().connect(this.filter)
         this.synth = new Tone.Synth().connect(this.distortion);
-        console.log('player created')
+
 
     }
 
