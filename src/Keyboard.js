@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { scaleLog } from 'd3';
+import * as Tone from 'tone';
 
 import './Keyboard.css';
-import player from './toneGenerator';
+import toneGenerator from './toneGenerator';
 import Controls from './Controls';
 
 const Keyboard = (props) => {
+
+    const [player, setPlayer] = useState(null);
 
     const [key, setKey] = useState(32.7);
     const [startingOctave, setStartingOctave] = useState(3);
@@ -16,7 +19,7 @@ const Keyboard = (props) => {
         const ceiling = floor * octaves * 2;
 
         return [floor, ceiling];
-    }
+    };
 
     const frequencyScale = scaleLog()
         .domain([800, 30])
@@ -32,15 +35,15 @@ const Keyboard = (props) => {
 
     const getMod = position => {
         return modScale.invert(position);
-    }
+    };
 
-    const touchStart = e => {
+    const touchStart = async (e) => {
 
         const mod = getMod(e.changedTouches[0].clientX);
         const freq = getFreq(e.changedTouches[0].clientY);
         player.play(freq, mod);
 
-    }
+    };
 
     const touchMove = e => {
         const freq = getFreq(e.changedTouches[0].clientY);
@@ -48,7 +51,42 @@ const Keyboard = (props) => {
         player.changeMod(mod);
         player.changeFreq(freq);
 
+    };
+
+    const touchEnd = () => {
+        player.stop();
     }
+
+    const startAudioContext = async () => {
+        await Tone.start();
+        setPlayer(new toneGenerator());
+    };
+    
+
+    const showKeyboard = () => {
+        if (!player) {
+            return (
+                <div
+                    className='keyboard'
+                    onTouchStart={startAudioContext}
+                >
+                    <div className="start">
+                        Press to Start
+                    </div>
+                </div>
+            );
+        }
+
+        return (
+            <div
+                className='keyboard'
+                onTouchStart={touchStart}
+                onTouchMove={touchMove}
+                onTouchEnd={touchEnd}
+                onTouchCancel={touchEnd}
+            />
+        );
+    };
 
     return (
         <div className='container'>
@@ -60,15 +98,9 @@ const Keyboard = (props) => {
                 startingOctave = {startingOctave}
                 setStartingOctave = {setStartingOctave}
             />
-            <div
-                className='keyboard'
-                onTouchStart={touchStart}
-                onTouchMove={touchMove}
-                onTouchEnd={player.stop}
-                onTouchCancel={player.stop}
-            >
 
-            </div>
+            {showKeyboard()}
+
             <div className='margin'/>
         </div>
     );

@@ -13,6 +13,8 @@
     rgb(255, 167, 66),
     rgb(209, 0, 80)
   );
+  cursor: pointer;
+  touch-action: none;
 }
 
 .margin {
@@ -61,4 +63,19 @@
   align-items: center;
   padding-top: 1rem;
   color: white;
+}
+
+.start {
+  height: 25%;
+  width: 50%;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
 }

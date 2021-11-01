@@ -7,7 +7,7 @@ const Controls = props => {
             <div className="controls">
 
                 <div className="note-selector">
-                    Key:
+                    Key 
                     <select
                         onInput={e => props.setKey(e.target.value)}
                         value={props.selectedKey}  
@@ -28,7 +28,7 @@ const Controls = props => {
                 </div>
 
                 <div className="note-selector">
-                    Starting Octave:
+                    Starting Octave
                     <select
                         onInput={e => props.setStartingOctave(e.target.value)}
                         value={props.startingOctave}
@@ -44,7 +44,7 @@ const Controls = props => {
                 </div>
 
                 <div className="note-selector">
-                    Octaves:
+                    Octaves
                     <select
                         onInput={e => props.setOctaves(e.target.value)}
                         value={props.octaves}

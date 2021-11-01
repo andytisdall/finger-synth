@@ -1,32 +1,36 @@
 import * as Tone from 'tone';
 
+class toneGenerator {
 
-const filter = new Tone.Filter(15000, 'lowpass').toDestination();
-const distortion = new Tone.Distortion().connect(filter)
-const synth = new Tone.Synth().connect(distortion);
+    constructor() {
 
-const player = {
+        this.filter = new Tone.Filter(20000, 'lowpass').toDestination();
+        this.distortion = new Tone.Distortion().connect(this.filter)
+        this.synth = new Tone.Synth().connect(this.distortion);
+        console.log('player created')
 
-    play: (frequency, mod) => {
-
-        synth.triggerAttack();
-        filter.frequency.value = mod * 150;
-        synth.frequency.value = frequency;
-    },
-
-    changeFreq: (frequency) => {
-        synth.frequency.value = frequency;
-    },
-
-    changeMod: (value) => {
-       filter.frequency.value = value * 150;
-    },
-
-    stop: () => {
-        synth.triggerRelease()
     }
 
-};
+    play(frequency, mod) {
+
+        this.synth.triggerAttack();
+        this.filter.frequency.value = mod * 150;
+        this.synth.frequency.value = frequency;
+    }
+
+    changeFreq(frequency) {
+        this.synth.frequency.value = frequency;
+    }
+
+    changeMod(value) {
+        this.filter.frequency.value = value * 150;
+    }
+
+    stop() {
+        this.synth.triggerRelease()
+    }
+
+}
 
 
-export default player;
+export default toneGenerator;
