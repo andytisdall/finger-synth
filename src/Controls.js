@@ -34,7 +34,7 @@ const Controls = props => {
     });
 
     return (
-        <div className="margin">
+        <div className="margin-top">
             <div className="controls">
 
                 <Selector

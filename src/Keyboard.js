@@ -23,7 +23,7 @@ const Keyboard = (props) => {
 
     const frequencyScale = scaleLog()
         .domain([
-            window.innerHeight - window.innerHeight * .05,
+            window.innerHeight * 0.9,
             window.innerHeight * .05
         ])
         .range(getFreqRange());
@@ -104,7 +104,7 @@ const Keyboard = (props) => {
 
             {showKeyboard()}
 
-            <div className='margin'/>
+            <div className='margin-bottom'/>
         </div>
     );
 };

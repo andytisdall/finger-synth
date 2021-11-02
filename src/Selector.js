@@ -7,7 +7,7 @@ const Selector = (props) => {
 
     useEffect(() => {
         document.addEventListener('touchstart', e => {
-            if (e.target === self.current) {
+            if (self.current.contains(e.target)) {
                 return;
             }
 
@@ -23,7 +23,11 @@ const Selector = (props) => {
             return (
                 <div
                     className="option"
-                    onClick={() => props.onSelect(option.value)}
+                    onClick={e => {
+                        e.stopPropagation();
+                        props.onSelect(option.value);
+                        setMenuOpen(false);
+                    }}
                     key={option.value}
                 >
                     {option.display}
@@ -35,14 +39,14 @@ const Selector = (props) => {
     const displayValue = props.options.find(option => option.value === props.selectedValue);
 
     return (
-        <div className="selector">
+        <div className="selector" ref={self}>
             <div className="selector-name">
                 {props.name}
             </div>
             <div
                 className="selector-menu"
                 onClick={() => setMenuOpen(!menuOpen)}
-                ref={self}
+                
             >
                 <div className="selector-selected">
                     {displayValue.display}
