@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/finger-synth/static/css/main.012f6837.chunk.css",
-    "main.js": "/finger-synth/static/js/main.38031e28.chunk.js",
-    "main.js.map": "/finger-synth/static/js/main.38031e28.chunk.js.map",
+    "main.js": "/finger-synth/static/js/main.1467c528.chunk.js",
+    "main.js.map": "/finger-synth/static/js/main.1467c528.chunk.js.map",
     "runtime-main.js": "/finger-synth/static/js/runtime-main.e6db1f80.js",
     "runtime-main.js.map": "/finger-synth/static/js/runtime-main.e6db1f80.js.map",
     "static/js/2.8909828a.chunk.js": "/finger-synth/static/js/2.8909828a.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.e6db1f80.js",
     "static/js/2.8909828a.chunk.js",
     "static/css/main.012f6837.chunk.css",
-    "static/js/main.38031e28.chunk.js"
+    "static/js/main.1467c528.chunk.js"
   ]
 }
