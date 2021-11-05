@@ -5,13 +5,15 @@ import * as Tone from 'tone';
 import './Keyboard.css';
 import toneGenerator from './toneGenerator';
 import Controls from './Controls';
+import EffectSelect from './EffectSelect';
 
 const Keyboard = (props) => {
 
-    const [player, setPlayer] = useState(null);
+    const [player, setPlayer] = useState(new toneGenerator());
     const [key, setKey] = useState(32.7);
     const [startingOctave, setStartingOctave] = useState(3);
     const [octaves, setOctaves] = useState(3);
+    const [effects, setEffects] = useState([]);
 
 
     const getFreqRange = () => {
@@ -62,8 +64,18 @@ const Keyboard = (props) => {
 
     const startAudioContext = async () => {
         await Tone.start();
-        setPlayer(new toneGenerator());
     };
+
+    const addEffect = effect => {
+        if (!effects.includes(effect)) {
+            player.addEffect(effect);
+            setEffects([...effects, effect]);
+        } else {
+            player.removeEffect(effect);
+            setEffects(effects.filter(fx => fx !== effect));
+        }
+    }
+
 
     const showKeyboard = () => {
  
@@ -104,6 +116,10 @@ const Keyboard = (props) => {
 
             {showKeyboard()}
 
+            <EffectSelect
+                addEffect={addEffect}
+                activeEffects={effects}
+            />
             <div className='margin-bottom'/>
         </div>
     );

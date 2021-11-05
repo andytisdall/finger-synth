@@ -84,3 +84,18 @@
   text-align: center;
   border: 1px solid black;
 }
+
+.effect-select {
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+}
+
+.effect {
+  padding: 1rem;
+}
+
+.active {
+  background-color: blueviolet;
+}
