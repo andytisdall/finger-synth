@@ -88,7 +88,10 @@ const Keyboard = (props) => {
                     onTouchStart={startAudioContext}
                 >
                     <div className="start">
-                        Press to Start
+                        Touch to start.
+                        <br />
+                        <br />
+                        This web app only works on mobile devices. For iPhone, make sure your ringer is on.
                     </div>
                 </div>
             );
@@ -122,7 +125,6 @@ const Keyboard = (props) => {
                 addEffect={addEffect}
                 activeEffects={effects}
             />
-            <div>made by andy</div>
         </div>
     );
 };
