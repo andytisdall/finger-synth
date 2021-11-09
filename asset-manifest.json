@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/finger-synth/static/css/main.012f6837.chunk.css",
-    "main.js": "/finger-synth/static/js/main.38031e28.chunk.js",
-    "main.js.map": "/finger-synth/static/js/main.38031e28.chunk.js.map",
+    "main.css": "/finger-synth/static/css/main.9d8bfc20.chunk.css",
+    "main.js": "/finger-synth/static/js/main.00129e0a.chunk.js",
+    "main.js.map": "/finger-synth/static/js/main.00129e0a.chunk.js.map",
     "runtime-main.js": "/finger-synth/static/js/runtime-main.e6db1f80.js",
     "runtime-main.js.map": "/finger-synth/static/js/runtime-main.e6db1f80.js.map",
     "static/js/2.8909828a.chunk.js": "/finger-synth/static/js/2.8909828a.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.83186b75.chunk.js": "/finger-synth/static/js/3.83186b75.chunk.js",
     "static/js/3.83186b75.chunk.js.map": "/finger-synth/static/js/3.83186b75.chunk.js.map",
     "index.html": "/finger-synth/index.html",
-    "static/css/main.012f6837.chunk.css.map": "/finger-synth/static/css/main.012f6837.chunk.css.map",
+    "static/css/main.9d8bfc20.chunk.css.map": "/finger-synth/static/css/main.9d8bfc20.chunk.css.map",
     "static/js/2.8909828a.chunk.js.LICENSE.txt": "/finger-synth/static/js/2.8909828a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e6db1f80.js",
     "static/js/2.8909828a.chunk.js",
-    "static/css/main.012f6837.chunk.css",
-    "static/js/main.38031e28.chunk.js"
+    "static/css/main.9d8bfc20.chunk.css",
+    "static/js/main.00129e0a.chunk.js"
   ]
 }
