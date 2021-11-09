@@ -14,6 +14,7 @@ const Keyboard = (props) => {
     const [startingOctave, setStartingOctave] = useState(3);
     const [octaves, setOctaves] = useState(3);
     const [effects, setEffects] = useState([]);
+    const [touched, setTouched] = useState(false);
 
 
     const getFreqRange = () => {
@@ -25,7 +26,7 @@ const Keyboard = (props) => {
 
     const frequencyScale = scaleLog()
         .domain([
-            window.innerHeight * 0.9,
+            window.innerHeight * 0.85,
             window.innerHeight * .05
         ])
         .range(getFreqRange());
@@ -64,6 +65,7 @@ const Keyboard = (props) => {
 
     const startAudioContext = async () => {
         await Tone.start();
+        setTouched(true);
     };
 
     const addEffect = effect => {
@@ -79,7 +81,7 @@ const Keyboard = (props) => {
 
     const showKeyboard = () => {
  
-        if (!player) {
+        if (!touched) {
             return (
                 <div
                     className='keyboard'
@@ -120,7 +122,7 @@ const Keyboard = (props) => {
                 addEffect={addEffect}
                 activeEffects={effects}
             />
-            <div className='margin-bottom'/>
+            <div>made by andy</div>
         </div>
     );
 };
