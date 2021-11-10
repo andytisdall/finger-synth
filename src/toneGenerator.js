@@ -98,10 +98,7 @@ class toneGenerator {
             }
         }
 
-
         this.connectChain();
-        console.log(this.chain)
-
     }
 
     removeEffect(effect) {
@@ -118,10 +115,7 @@ class toneGenerator {
             this.chain = this.chain.filter(fx => fx !== this.delay);
         }
 
-
         this.connectChain();
-        console.log(this.chain)
-
     }
 
 
