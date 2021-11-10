@@ -77,10 +77,16 @@ class toneGenerator {
 
 
         if (effect === 'vibrato') {
-            if (this.chain.length < 2) {
+            if (this.chain.length === 1) {
                 this.chain.push(this.vibrato);
-            } else {
-                this.chain.splice(3, 0, this.vibrato);
+            } else if (this.chain.length === 2) {
+                if (this.chain[1] === this.filter) {
+                    this.chain.push(this.vibrato);
+                } else {
+                    this.chain.splice(1, 0, this.vibrato);
+                }
+            } else if (this.chain.length === 3) {
+                this.chain.splice(2, 0, this.vibrato);
             }
         }
 
@@ -94,37 +100,27 @@ class toneGenerator {
 
 
         this.connectChain();
+        console.log(this.chain)
 
     }
 
     removeEffect(effect) {
 
         if (effect === 'filter') {
-            this.chain.pop(1).disconnect();
+            this.chain = this.chain.filter(fx => fx !== this.filter);
         }
 
         if (effect === 'vibrato') {
-            if (this.chain.length === 2) {
-                this.chain.pop(1).disconnect();
-            }
-
-            else {
-                this.chain.pop(2).disconnect();
-            }
+            this.chain = this.chain.filter(fx => fx !== this.vibrato);
         }
 
         if (effect === 'delay') {
-            if (this.chain.length === 2) {
-                this.chain.pop(1).disconnect();
-            } else if (this.chain.length === 3) {
-                this.chain.pop(2).disconnect();
-            } else {
-                this.chain.pop(3).disconnect();
-            }
+            this.chain = this.chain.filter(fx => fx !== this.delay);
         }
 
 
         this.connectChain();
+        console.log(this.chain)
 
     }
 
