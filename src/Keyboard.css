@@ -2,13 +2,14 @@
   height: 100vh;
   touch-action: none;
   user-select: none;
+  /* min-width: 350px; */
 }
 
 .keyboard {
   display: flex;
   flex-direction: column-reverse;
   justify-content: space-between;
-  height: 75%;
+  height: 73%;
   position: relative;
   background-image: linear-gradient(
     to bottom right,
@@ -18,8 +19,11 @@
 }
 
 .margin-top {
-  height: 5%;
+  height: 7%;
+  min-height: 3rem;
   background-color: black;
+  display: flex;
+  align-items: center;
 }
 
 .start {
@@ -34,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: center;
   padding: 0 1.5rem;
   box-sizing: border-box;
@@ -43,23 +47,23 @@
 .controls {
   display: flex;
   justify-content: space-around;
-  align-items: start;
   color: white;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .selector {
   display: flex;
-  align-items: start;
+  align-items: center;
   padding-top: 0.2rem;
+  width: min-content;
 }
 
 .selector-name {
   display: flex;
   align-items: center;
   color: rgb(255, 184, 223);
-  padding-top: 0.4rem;
-  margin-right: 0.2rem;
+  margin-right: 0.5rem;
 }
 
 .selector-menu {
@@ -69,16 +73,17 @@
 
 .selector-selected {
   background-color: rgb(245, 212, 105);
-  padding: 0.5rem 0.7rem;
+  padding: 0.8rem 1rem;
   border: 1px solid black;
 }
 
 .selector-options {
   background-color: rgb(242, 177, 255);
+  position: absolute;
 }
 
 .option {
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.7rem;
   text-align: center;
   border: 1px solid black;
 }
@@ -103,8 +108,9 @@
 .help {
   position: absolute;
   left: 0;
-  bottom: 9.2rem;
+  bottom: 0;
   background-color: cadetblue;
   border: 1px solid black;
   padding: 0.5rem 1rem;
+  z-index: 50;
 }

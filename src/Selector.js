@@ -41,7 +41,7 @@ const Selector = (props) => {
     return (
         <div className="selector" ref={self}>
             <div className="selector-name">
-                {props.name}
+                {props.name}:
             </div>
             <div
                 className="selector-menu"

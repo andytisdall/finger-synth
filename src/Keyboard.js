@@ -105,7 +105,9 @@ const Keyboard = (props) => {
                 onTouchMove={touchMove}
                 onTouchEnd={touchEnd}
                 onTouchCancel={touchEnd}
-            />
+            >
+                <Help />
+            </div>
         );
     };
 
@@ -119,10 +121,11 @@ const Keyboard = (props) => {
                 startingOctave = {startingOctave}
                 setStartingOctave = {setStartingOctave}
             />
+            
 
             {showKeyboard()}
 
-            <Help />
+            
 
             <EffectSelect
                 addEffect={addEffect}
