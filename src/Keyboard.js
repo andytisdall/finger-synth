@@ -6,6 +6,7 @@ import './Keyboard.css';
 import toneGenerator from './toneGenerator';
 import Controls from './Controls';
 import EffectSelect from './EffectSelect';
+import Help from './Help';
 
 const Keyboard = (props) => {
 
@@ -120,6 +121,8 @@ const Keyboard = (props) => {
             />
 
             {showKeyboard()}
+
+            <Help />
 
             <EffectSelect
                 addEffect={addEffect}

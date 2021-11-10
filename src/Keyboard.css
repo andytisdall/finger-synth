@@ -99,3 +99,12 @@
 .active {
   background-color: blueviolet;
 }
+
+.help {
+  position: absolute;
+  left: 0;
+  bottom: 9.2rem;
+  background-color: cadetblue;
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+}
